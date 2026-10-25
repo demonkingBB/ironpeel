@@ -49,3 +49,30 @@ nav.addEventListener('click', event => {
     menuButton.setAttribute('aria-expanded', 'false');
   }
 });
+
+// The entrance choice carries audio intent through the one-click navigation.
+if (new URLSearchParams(window.location.search).get('audio') === '1') {
+  fetch('json/songs.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Playlist could not be loaded.');
+      return response.json();
+    })
+    .then(({ tracks = [] }) => {
+      const playableTracks = tracks.filter(track => track.src);
+      if (!playableTracks.length) return;
+
+      const music = new Audio();
+      let current = 0;
+      const playNextTrack = () => {
+        const track = playableTracks[current];
+        music.src = track.src;
+        music.play().catch(() => {});
+      };
+      music.addEventListener('ended', () => {
+        current = (current + 1) % playableTracks.length;
+        playNextTrack();
+      });
+      playNextTrack();
+    })
+    .catch(error => console.warn(error));
+}

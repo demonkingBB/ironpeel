@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111210">
+  <meta name="description" content="Meet Banana Man. Choose your entrance.">
+  <title>Banana Man — Entrance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/entrance.css">
+  <script src="js/entrance.js" defer></script>
+</head>
+<body>
+  <main class="entrance" aria-labelledby="title">
+    <div class="grid" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <p class="eyebrow"><span></span> THE IRON PEEL PRESENTS</p>
+    <h1 id="title">BANANA<br><em>MAN</em></h1>
+
+    <div class="mascot" aria-hidden="true">
+      <img src="assets/Images/IMG_0046_x_background.PNG" alt="Origina Banana Man">
+    </div>
+
+    <section class="gate" aria-label="Choose whether to play music">
+      <p class="gate-prompt">YOUR ENTRANCE. YOUR CALL.</p>
+      <div class="choices">
+        <button class="choice choice-audio" id="with-audio" type="button">ENTER WITH AUDIO <span>♫</span></button>
+        <button class="choice choice-silent" id="without-audio" type="button">ENTER WITHOUT AUDIO <span>→</span></button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
