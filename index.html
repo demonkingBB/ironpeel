@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111210">
+  <meta name="description" content="Iron Peel — gym gear for people who bring the peel." />
+  <title>Iron Peel — Strong looks good on you.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#home" aria-label="Iron Peel home"><span class="mark">IP</span><span>IRON<span class="gold">PEEL</span><small>GYM CLOTHING</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#home">Home</a>
+      <a class="nav-link" href="#about">About me</a>
+      <a class="nav-link" href="#contact">Contact us</a>
+      <a class="nav-link future" href="#shop">Shop <span>SOON</span></a>
+      <a class="nav-link future" href="#gear">Gear <span>SOON</span></a>
+    </nav>
+    <a class="header-cta" href="#about">Meet the peel <span>↗</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> GYM CLOTHING WITH A LITTLE EXTRA PEEL</div>
+        <h1 id="hero-title">BUILT<br>DIFFERENT.<br><span>PEELED</span> STRONG.</h1>
+        <p class="intro">For the ones who show up, lift heavy, and never take themselves too seriously.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#about">Get to know us <span>↗</span></a><a class="text-link" href="#contact">Say hello <span>→</span></a></div>
+        <div class="hero-note"><span class="note-icon">✳</span><span><strong>100% potassium powered</strong><br>Results may vary. Gains may not.</span></div>
+      </div>
+
+      <div class="stage" aria-label="Interactive Banana Man artwork">
+        <div class="stage-grid"></div><div class="stage-glow"></div>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="stage-label"><span class="live-dot"></span><span id="state-label">ORIGINAL PEEL</span><span class="label-index" id="state-index">01 / 04</span></div>
+        <div class="art-frame" id="art-frame">
+          <div class="art-halo"></div>
+          <img id="banana-art" src="assets/Images/IMG_0046.PNG" alt="Banana Man, the Iron Peel mascot, lifting dumbbells" fetchpriority="high">
+          <div class="art-shadow"></div>
+          <div class="impact" aria-hidden="true">POW!</div>
+        </div>
+        <div class="stage-caption"><span>THE MANY MOODS OF BANANA MAN</span><span>SELECT A PEEL TO MIX IT UP ↘</span></div>
+        <div class="variant-row" role="group" aria-label="Choose Banana Man color and style">
+          <button class="variant selected" data-image="IMG_0046.PNG" data-name="Original peel" data-color="#ffba25" aria-label="Original gold Banana Man" aria-pressed="true"><img src="assets/Images/IMG_0046.PNG" alt=""><span class="variant-swatch gold-swatch"></span></button>
+          <button class="variant" data-image="IMG_0050.PNG" data-name="Radioactive peel" data-color="#b5e62a" aria-label="Green Banana Man" aria-pressed="false"><img src="assets/Images/IMG_0050.PNG" alt=""><span class="variant-swatch lime-swatch"></span></button>
+          <button class="variant" data-image="IMG_0051.PNG" data-name="Holiday peel" data-color="#ffba25" aria-label="Holiday Banana Man" aria-pressed="false"><img src="assets/Images/IMG_0051.PNG" alt=""><span class="variant-swatch red-swatch"></span></button>
+          <button class="variant" data-image="IMG_0052.PNG" data-name="Winter peel" data-color="#b5e62a" aria-label="Green holiday Banana Man" aria-pressed="false"><img src="assets/Images/IMG_0052.PNG" alt=""><span class="variant-swatch ice-swatch"></span></button>
+          <span class="mix-hint"><span>+</span> TAP TO MIX</span>
+        </div>
+      </div>
+      <div class="scroll-cue"><span class="scroll-line"></span> THE SHORT VERSION <span>↓</span></div>
+      <div class="hero-index">01 <span>/</span> 03</div>
+    </section>
+
+    <section class="about-strip" id="about">
+      <div class="strip-kicker"><span>01</span> THE IRON PEEL IDEA</div>
+      <div class="strip-content"><h2>TAKE YOUR<br>TRAINING <em>seriously.</em><br>YOURSELF? <em>Not so much.</em></h2><p>Iron Peel is gym clothing with a heavyweight attitude and a sense of humor. Meet Banana Man: proof that you can be strong, show up, and still be a little bananas.</p><a href="#contact" class="strip-link">MORE ABOUT US <span>↗</span></a></div>
+      <div class="strip-stamp">STAY<br><span>RIPE</span><br>OUT THERE <b>✳</b></div>
+    </section>
+    <footer class="site-footer" id="contact"><a class="footer-brand" href="#home">IRON<span>PEEL</span></a><p>Strong looks good on you. So does a sense of humor.</p><a href="mailto:hello@ironpeel.com" class="footer-contact">SAY HELLO <span>↗</span></a><span class="copyright">© 2026 IRON PEEL GYM CLOTHING</span></footer>
+  </main>
+</body>
+</html>
