@@ -53,8 +53,6 @@ nav.addEventListener('click', event => {
 const musicWidget = document.querySelector('#music-widget');
 if (musicWidget) {
   const player = new Audio();
-  const panel = document.querySelector('#music-panel');
-  const trigger = document.querySelector('#music-trigger');
   const playButton = document.querySelector('#music-play');
   const trackLabel = document.querySelector('#music-track');
   const statusLabel = document.querySelector('#music-status');
@@ -128,11 +126,6 @@ if (musicWidget) {
     }
   };
 
-  trigger.addEventListener('click', () => {
-    const open = panel.hidden;
-    panel.hidden = !open;
-    trigger.setAttribute('aria-expanded', String(open));
-  });
   playButton.addEventListener('click', () => {
     if (player.paused) playCurrentTrack();
     else player.pause();
@@ -159,8 +152,6 @@ if (musicWidget) {
 
   // The entrance choice carries audio intent through the one-click navigation.
   if (new URLSearchParams(window.location.search).get('audio') === '1') {
-    panel.hidden = false;
-    trigger.setAttribute('aria-expanded', 'true');
     playCurrentTrack();
   }
 }
