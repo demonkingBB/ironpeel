@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/music.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -22,6 +23,21 @@
       <a class="nav-link future" href="shop.html">Shop <span>SOON</span></a>
       <a class="nav-link future" href="#gear">Gear <span>SOON</span></a>
     </nav>
+    <div class="music-widget" id="music-widget">
+      <button class="music-trigger" id="music-trigger" type="button" aria-expanded="false" aria-controls="music-panel"><span aria-hidden="true">♫</span><span class="music-trigger-label">MUSIC</span></button>
+      <section class="music-panel" id="music-panel" aria-label="Music player" hidden>
+        <p class="music-panel-label">IRON PEEL RADIO</p>
+        <p class="music-track" id="music-track">No track selected</p>
+        <div class="music-transport" role="group" aria-label="Playback controls">
+          <button type="button" id="music-previous" aria-label="Previous track" title="Previous track">|◀</button>
+          <button type="button" id="music-play" aria-label="Play music" title="Play">▶</button>
+          <button type="button" id="music-stop" aria-label="Stop music" title="Stop">■</button>
+          <button type="button" id="music-next" aria-label="Next track" title="Next track">▶|</button>
+        </div>
+        <label class="music-volume" for="music-volume"><span aria-hidden="true">VOL</span><input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Volume"></label>
+        <p class="music-status" id="music-status" aria-live="polite">Choose play to start the music.</p>
+      </section>
+    </div>
     <a class="header-cta" href="#about">Meet the peel <span>↗</span></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
   </header>

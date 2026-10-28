@@ -50,29 +50,117 @@ nav.addEventListener('click', event => {
   }
 });
 
-// The entrance choice carries audio intent through the one-click navigation.
-if (new URLSearchParams(window.location.search).get('audio') === '1') {
-  fetch('json/songs.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Playlist could not be loaded.');
-      return response.json();
-    })
-    .then(({ tracks = [] }) => {
-      const playableTracks = tracks.filter(track => track.src);
-      if (!playableTracks.length) return;
+const musicWidget = document.querySelector('#music-widget');
+if (musicWidget) {
+  const player = new Audio();
+  const panel = document.querySelector('#music-panel');
+  const trigger = document.querySelector('#music-trigger');
+  const playButton = document.querySelector('#music-play');
+  const trackLabel = document.querySelector('#music-track');
+  const statusLabel = document.querySelector('#music-status');
+  const volumeSlider = document.querySelector('#music-volume');
+  let playlist = [];
+  let currentTrack = 0;
+  let playlistRequest;
 
-      const music = new Audio();
-      let current = 0;
-      const playNextTrack = () => {
-        const track = playableTracks[current];
-        music.src = track.src;
-        music.play().catch(() => {});
-      };
-      music.addEventListener('ended', () => {
-        current = (current + 1) % playableTracks.length;
-        playNextTrack();
-      });
-      playNextTrack();
-    })
-    .catch(error => console.warn(error));
+  player.preload = 'none';
+  player.volume = Number(volumeSlider.value);
+
+  const updatePlaybackButton = () => {
+    const playing = !player.paused;
+    playButton.textContent = playing ? 'Ⅱ' : '▶';
+    playButton.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+    playButton.title = playing ? 'Pause' : 'Play';
+  };
+
+  const loadPlaylist = () => {
+    if (!playlistRequest) {
+      playlistRequest = fetch('json/songs.json')
+        .then(response => {
+          if (!response.ok) throw new Error('Playlist could not be loaded.');
+          return response.json();
+        })
+        .then(data => {
+          playlist = Array.isArray(data.tracks) ? data.tracks.filter(track => track.src) : [];
+          return playlist;
+        });
+    }
+    return playlistRequest;
+  };
+
+  const setTrack = index => {
+    currentTrack = (index + playlist.length) % playlist.length;
+    const track = playlist[currentTrack];
+    player.src = track.src;
+    trackLabel.textContent = track.title || `Track ${currentTrack + 1}`;
+    return track;
+  };
+
+  const playCurrentTrack = async () => {
+    try {
+      const tracks = await loadPlaylist();
+      if (!tracks.length) {
+        statusLabel.textContent = 'No songs are listed in the playlist yet.';
+        return;
+      }
+      if (!player.src) setTrack(currentTrack);
+      await player.play();
+      statusLabel.textContent = 'NOW PLAYING';
+    } catch (error) {
+      console.warn(error);
+      statusLabel.textContent = 'Tap play to start, or check the playlist file.';
+    }
+  };
+
+  const playTrackAt = async index => {
+    try {
+      const tracks = await loadPlaylist();
+      if (!tracks.length) {
+        statusLabel.textContent = 'No songs are listed in the playlist yet.';
+        return;
+      }
+      setTrack(index);
+      await player.play();
+      statusLabel.textContent = 'NOW PLAYING';
+    } catch (error) {
+      console.warn(error);
+      statusLabel.textContent = 'Tap play to start, or check the playlist file.';
+    }
+  };
+
+  trigger.addEventListener('click', () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    trigger.setAttribute('aria-expanded', String(open));
+  });
+  playButton.addEventListener('click', () => {
+    if (player.paused) playCurrentTrack();
+    else player.pause();
+  });
+  document.querySelector('#music-stop').addEventListener('click', () => {
+    player.pause();
+    player.currentTime = 0;
+    statusLabel.textContent = 'STOPPED';
+  });
+  document.querySelector('#music-previous').addEventListener('click', async () => {
+    if (player.currentTime > 3) {
+      player.currentTime = 0;
+      if (player.paused) await playCurrentTrack();
+    } else {
+      await playTrackAt(currentTrack - 1);
+    }
+  });
+  document.querySelector('#music-next').addEventListener('click', () => playTrackAt(currentTrack + 1));
+  volumeSlider.addEventListener('input', () => { player.volume = Number(volumeSlider.value); });
+  player.addEventListener('play', updatePlaybackButton);
+  player.addEventListener('pause', updatePlaybackButton);
+  player.addEventListener('ended', () => playTrackAt(currentTrack + 1));
+  player.addEventListener('error', () => { statusLabel.textContent = 'Could not load this track.'; });
+
+  // The entrance choice carries audio intent through the one-click navigation.
+  if (new URLSearchParams(window.location.search).get('audio') === '1') {
+    panel.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    playCurrentTrack();
+  }
 }
