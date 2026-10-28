@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111210">
+  <meta name="description" content="A first look at Iron Peel concept apparel. Shop soon.">
+  <title>Shop Soon — Iron Peel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="index.html#home" aria-label="Iron Peel home"><span class="mark">IP</span><span>IRON<span class="gold">PEEL</span><small>GYM CLOTHING</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-link" href="index.html#home">Home</a>
+      <a class="nav-link" href="index.html#about">About me</a>
+      <a class="nav-link" href="index.html#contact">Contact us</a>
+      <a class="nav-link active" href="shop.html" aria-current="page">Shop <span>SOON</span></a>
+      <a class="nav-link future" href="#gear">Gear <span>SOON</span></a>
+    </nav>
+    <a class="header-cta" href="index.html#about">Meet the peel <span>↗</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
+  </header>
+
+  <main class="shop-page">
+    <section class="shop-hero" aria-labelledby="shop-title">
+      <div class="shop-hero-copy">
+        <p class="shop-kicker"><span class="pulse"></span> CONCEPT COLLECTION · FIRST LOOK</p>
+        <h1 id="shop-title">SHOP<br><span>SOON.</span></h1>
+        <p class="shop-intro">A few ideas for what Iron Peel could look like out in the world. These are concepts for now—the real gear is still taking shape.</p>
+        <div class="store-actions" aria-label="Future storefront links">
+          <!-- Replace each # with your storefront URL and remove aria-disabled when the store is ready. -->
+          <a class="store-button store-button-primary" href="#" aria-disabled="true" data-store="sellfy">SELLFY <span>LINK COMING SOON</span></a>
+          <a class="store-button" href="#" aria-disabled="true" data-store="shopify">SHOPIFY <span>LINK COMING SOON</span></a>
+        </div>
+        <p class="concept-note"><span>✳</span> CONCEPT ART — NOT AVAILABLE TO PURCHASE YET</p>
+      </div>
+      <div class="shop-logo-wrap">
+        <div class="shop-logo-grid" aria-hidden="true"></div>
+        <img class="shop-logo" src="assets/Images/concept_merch/concept_page%20logo.png" alt="Iron Peel Gym Clothing concept artwork featuring Banana Man">
+        <span class="logo-caption">IRON PEEL · THE CONCEPT</span>
+      </div>
+    </section>
+
+    <section class="concepts" aria-labelledby="concepts-title">
+      <div class="concepts-heading">
+        <div><p class="section-kicker"><span>01</span> EARLY IDEAS</p><h2 id="concepts-title">THE CONCEPT RACK</h2></div>
+        <p>Not a product drop. Just a peek at the direction.</p>
+      </div>
+      <div class="concept-grid">
+        <article class="concept-card concept-sweatshirts">
+          <div class="concept-image"><img src="assets/Images/concept_merch/IMG_0046.png" alt="Concept Iron Peel hoodies in black, gray, and olive"></div>
+          <div class="concept-meta"><span class="concept-number">01</span><h3>SWEATSHIRTS</h3><span class="concept-tag">CONCEPT</span></div>
+        </article>
+        <article class="concept-card">
+          <div class="concept-image"><img src="assets/Images/concept_merch/IMG_beanies_socks.png" alt="Concept Iron Peel beanies and socks"></div>
+          <div class="concept-meta"><span class="concept-number">02</span><h3>BEANIES + SOCKS</h3><span class="concept-tag">CONCEPT</span></div>
+        </article>
+        <article class="concept-card">
+          <div class="concept-image"><img src="assets/Images/concept_merch/IMG_shirts.png" alt="Concept Iron Peel graphic and logo shirts"></div>
+          <div class="concept-meta"><span class="concept-number">03</span><h3>SHIRTS</h3><span class="concept-tag">CONCEPT</span></div>
+        </article>
+        <article class="concept-card">
+          <div class="concept-image"><img src="assets/Images/concept_merch/IMG_shorts.png" alt="Concept Iron Peel training shorts in black and olive"></div>
+          <div class="concept-meta"><span class="concept-number">04</span><h3>SHORTS</h3><span class="concept-tag">CONCEPT</span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shop-footer">
+    <a class="footer-brand" href="index.html#home">IRON<span>PEEL</span></a>
+    <p>Strong looks good on you. So does a sense of humor.</p>
+    <a class="footer-contact" href="index.html#contact">SAY HELLO <span>↗</span></a>
+    <span class="copyright">© 2026 IRON PEEL GYM CLOTHING</span>
+  </footer>
+  <script>
+    document.querySelectorAll('.store-button[aria-disabled="true"]').forEach(link => {
+      link.addEventListener('click', event => event.preventDefault());
+    });
+  </script>
+</body>
+</html>
